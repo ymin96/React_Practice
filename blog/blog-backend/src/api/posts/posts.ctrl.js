@@ -176,7 +176,7 @@ export const remove = async (ctx) => {
 export const update = async (ctx) => {
     const { id } = ctx.params;
     // write 에서 사용한 schema와 비슷하지만, required()가 없다.
-    const schema = Joi.object.keys({
+    const schema = Joi.object().keys({
         title: Joi.string(),
         body: Joi.string(),
         tags: Joi.array().items(Joi.string()),
