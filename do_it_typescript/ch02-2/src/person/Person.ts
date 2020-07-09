@@ -8,4 +8,5 @@ export default class Person implements IPerson{
 }
 
 export const makePerson = (name: string,
-    age:number = makeRandomNumber()) => ({name, age})
+    age:number = makeRandomNumber()) => ({name, age});
+
