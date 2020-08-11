@@ -29,6 +29,7 @@ export default {
         white: "#FFFFFF",
         gray: "#CCCCCC",
         default: "#999999",
+        error: '#FF0000', // 오류 색상
     },
     // 글꼴 크기
     size: {

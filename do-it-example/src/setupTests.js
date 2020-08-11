@@ -6,6 +6,11 @@
 
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16.3";
+import * as Aphrodite from 'aphrodite';
+import * as AphroditeNoImpoertant from 'aphrodite/no-important';
+
+Aphrodite.StyleSheetTestUtils.suppressStyleInjection();
+AphroditeNoImpoertant.StyleSheetTestUtils.suppressStyleInjection();
 
 configure({ adapter: new Adapter() });
 
