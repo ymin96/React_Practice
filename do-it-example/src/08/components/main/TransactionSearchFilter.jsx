@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 import InlineList from "../../../doit_ui/InlineList";
 import Button from "../../../doit_ui/Button";
@@ -7,11 +8,22 @@ import Input from "../../../doit_ui/Input";
 import Form from "../../../doit_ui/Form";
 
 import Select, { Option } from "../../../doit_ui/Select";
+import Api from "../../API";
 
 class TransactionSearchFilter extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleSubmit(params) {
+        const { setTransactionList } = this.props;
+        Api.get("/transactionList", { params }).then(({ data }) =>
+            setTransactionList(data)
+        );
+    }
     render() {
         return (
-            <Form onSubmit={(values) => console.log(values)}>
+            <Form onSubmit={this.handleSubmit}>
                 <Form.Consumer>
                     {({ onChange, values }) => (
                         <InlineList spacingBetween={2} verticalAlign="bottom">
@@ -33,13 +45,13 @@ class TransactionSearchFilter extends PureComponent {
                                 name="minAmount"
                                 label="최소 거래가"
                                 onChnage={onChange}
-                                value={values["minAmount"]}
+                                value={values["currentPrice_gte"]}
                             />
                             <Input
                                 name="maxAmount"
                                 label="최대 거래가"
                                 onChange={onChange}
-                                value={values["maxAmount"]}
+                                value={values["currentPrice_lte"]}
                             />
                             <Button type="submit" primary>
                                 검색
@@ -52,6 +64,8 @@ class TransactionSearchFilter extends PureComponent {
     }
 }
 
-TransactionSearchFilter.propTypes = {};
+TransactionSearchFilter.propTypes = {
+    setTransactionList: PropTypes.func,
+};
 
 export default TransactionSearchFilter;

@@ -1,15 +1,15 @@
 import React, { PureComponent } from "react";
 import CoinOverview from "./CoinOverview";
-import TransactoinList from "./TransactionList";
+import TransactionListContainer from "../../containers/main/TransactionListContainer";
 
-class MainPage extends PureComponent{
-    render(){
-        return(
+class MainPage extends PureComponent {
+    render() {
+        return (
             <React.Fragment>
-                <CoinOverview/>
-                <TransactoinList/>
+                <CoinOverview />
+                <TransactionListContainer />
             </React.Fragment>
-        )
+        );
     }
 }
 
